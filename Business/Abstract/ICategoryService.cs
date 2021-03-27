@@ -9,6 +9,6 @@ namespace Business.Abstract
     public interface ICategoryService
     {
         IDataResult<List<Category>> GetAll();
-        IDataResult<Category> GetByID(int categoryID);
+        IDataResult<Category> GetById(int categoryId);
     }
 }

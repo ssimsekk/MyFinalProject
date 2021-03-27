@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.Text;
 using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
-using Core.Extentions;
+using Core.Extensions;
 using Business.Constants;
 
 namespace Business.BusinessAspects.Autofac
 {
-    //JWT için
+    //JWT
     public class SecuredOperation : MethodInterception
     {
         private string[] _roles;

@@ -16,6 +16,9 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
+        //Loosely coupled
+        //naming convention
+        //IoC Container -- Inversion of Control
         IProductService _productService;
 
         public ProductsController(IProductService productService)
@@ -23,9 +26,11 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
 
-        [HttpGet ("getall")]
+        [HttpGet("getall")]
         public IActionResult GetAll()
         {
+            //Swagger
+            //Dependency chain --
 
             Thread.Sleep(1000);
 
@@ -35,12 +40,13 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result);
+
         }
 
-        [HttpGet ("getbyid")]
-        public IActionResult GetByID(int id)
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int id)
         {
-            var result = _productService.GetByID(id);
+            var result = _productService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -52,7 +58,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbycategory")]
         public IActionResult GetByCategory(int categoryId)
         {
-            var result = _productService.GetAllByCategoryID(categoryId);
+            var result = _productService.GetAllByCategoryId(categoryId);
             if (result.Success)
             {
                 return Ok(result);
@@ -61,7 +67,19 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost ("add")]
+        [HttpGet("getproductdetails")]
+        public IActionResult GetProductDetails(int categoryId)
+        {
+            var result = _productService.GetProductDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpPost("add")]
         public IActionResult Add(Product product)
         {
             var result = _productService.Add(product);
@@ -71,5 +89,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+
     }
 }

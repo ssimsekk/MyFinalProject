@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Core.CrossCuttingConcerns.Caching.Microsoft
 {
     public class MemoryCacheManager : ICacheManager
     {
+        //Adapter Pattern
         IMemoryCache _memoryCache;
 
         public MemoryCacheManager()
